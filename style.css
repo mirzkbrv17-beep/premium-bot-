@@ -1,0 +1,86 @@
+:root{--bg:#08090D;--card:#11141C;--gold:#D6AE55;--gold2:#FFD778;--blue:#42B8FF;--violet:#9666FF;--green:#42E6B0;
+--text:#F3F1EA;--muted:#9AA0AE;--glass:rgba(255,255,255,.055);--line:rgba(255,255,255,.09);
+--safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 -apple-system,"SF Pro Text","Segoe UI",Roboto,sans-serif}
+body{min-height:100vh;overflow-x:hidden}
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+.aurora i{position:absolute;width:70vmax;height:70vmax;border-radius:50%;filter:blur(90px);opacity:.28;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){background:var(--violet);top:-30vmax;left:-20vmax}
+.aurora i:nth-child(2){background:var(--blue);bottom:-35vmax;right:-25vmax;animation-delay:-8s}
+.aurora i:nth-child(3){background:var(--green);top:30vh;left:40vw;width:40vmax;height:40vmax;opacity:.14;animation-delay:-14s}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+main{padding:calc(14px + var(--safe-t)) 14px calc(96px + var(--safe-b));max-width:560px;margin:0 auto}
+h1{font-size:22px;margin:4px 0 14px;letter-spacing:.2px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin:20px 4px 10px;font-weight:600}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:16px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);margin-bottom:12px}
+.row{display:flex;align-items:center;gap:12px}.between{justify-content:space-between}.grow{flex:1;min-width:0}
+.muted{color:var(--muted)}.small{font-size:12.5px}.gold{color:var(--gold2)}.blue{color:var(--blue)}
+.loader{text-align:center;margin-top:35vh;font-weight:800;letter-spacing:8px;color:var(--gold);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.35}}
+/* balans kartalari */
+.balances{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bal{position:relative;overflow:hidden;text-align:center;padding:18px 10px 16px}
+.bal.f{background:linear-gradient(160deg,rgba(214,174,85,.20),rgba(214,174,85,.04))}
+.bal.t{background:linear-gradient(160deg,rgba(66,184,255,.20),rgba(150,102,255,.08))}
+.bal .num{font-size:26px;font-weight:800;margin-top:12px;font-variant-numeric:tabular-nums}
+.bal .lbl{font-size:12px;letter-spacing:1.5px;color:var(--muted)}
+.stage{height:112px;display:flex;align-items:center;justify-content:center;perspective:600px;position:relative}
+/* 3D tanga */
+.coin{position:relative;width:84px;height:84px;transform-style:preserve-3d;animation:spin 7s linear infinite}
+.coin .face,.coin .slice{position:absolute;inset:0;border-radius:50%}
+.coin .face{backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;
+background:radial-gradient(circle at 32% 28%,#FFF1B8,#FFD778 28%,#D6AE55 62%,#8A6A22);border:3px solid #f6cf72;
+box-shadow:inset 0 0 14px rgba(120,80,0,.55),0 0 26px rgba(255,215,120,.45);color:#5a3f08;font-weight:900;line-height:.95}
+.coin .face b{font-size:25px;letter-spacing:1px;text-shadow:0 1px 0 rgba(255,255,255,.55)}.coin .face small{font-size:19px}
+.coin .front{transform:translateZ(5px)}.coin .back{transform:rotateY(180deg) translateZ(5px)}
+.coin .slice{background:#a57c28;border:1px solid #c79a3c}
+@keyframes spin{to{transform:rotateY(360deg)}}
+/* 3D olmos */
+.gem{position:relative;width:92px;height:92px;transform-style:preserve-3d;animation:spin 8s linear infinite,bob 3.4s ease-in-out infinite}
+.gem .face{position:absolute;inset:0;backface-visibility:hidden;clip-path:polygon(50% 0,100% 34%,50% 100%,0 34%);
+background:linear-gradient(135deg,#BDEBFF 0%,#42B8FF 35%,#9666FF 80%,#5b3cc4 100%);display:flex;align-items:center;justify-content:center;
+color:#fff;font-weight:900;font-size:14px;letter-spacing:.5px;padding-bottom:20px;text-shadow:0 1px 6px rgba(20,0,80,.6)}
+.gem .face::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.5) 48%,transparent 62%);mix-blend-mode:overlay}
+.gem .front{transform:translateZ(3px)}.gem .back{transform:rotateY(180deg) translateZ(3px)}
+.glow{position:absolute;width:110px;height:110px;border-radius:50%;filter:blur(26px);opacity:.55;z-index:-1}
+.f .glow{background:var(--gold)}.t .glow{background:var(--violet)}
+@keyframes bob{50%{margin-top:-8px}}
+.spark{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;opacity:0;animation:spark 3.2s infinite}
+.f .spark{background:var(--gold2)}.t .spark{background:var(--blue)}
+@keyframes spark{0%{opacity:0;transform:translateY(20px) scale(.4)}30%{opacity:.9}100%{opacity:0;transform:translateY(-34px) scale(1)}}
+.bump{animation:bump .6s ease}@keyframes bump{40%{transform:scale(1.18);color:var(--gold2)}}
+/* tugmalar, inputlar */
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{border:0;border-radius:14px;padding:11px 16px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#2b1d02;transition:transform .12s,opacity .2s}
+.btn:active{transform:scale(.96)}.btn[disabled]{opacity:.45}
+.btn.ghost{background:var(--glass);color:var(--text);border:1px solid var(--line)}
+.btn.blue{background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff}
+.btn.sm{padding:8px 12px;font-size:13px;border-radius:12px}
+input,select,textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:12px;outline:0}
+input:focus,textarea:focus{border-color:var(--gold)}
+textarea{min-height:80px;resize:vertical}.stack>*+*{margin-top:10px}
+.chip{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;background:rgba(214,174,85,.14);color:var(--gold2);border:1px solid rgba(214,174,85,.3)}
+.chip.v{background:rgba(150,102,255,.15);color:#c9b5ff;border-color:rgba(150,102,255,.35)}
+.bar{height:9px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue),var(--violet));border-radius:99px;transition:width .8s}
+.avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:800;color:#2b1d02;background:linear-gradient(135deg,var(--gold2),var(--gold));box-shadow:0 0 22px rgba(255,215,120,.35)}
+.streak{display:flex;gap:8px;justify-content:space-between;margin:14px 0}
+.dot{flex:1;text-align:center;padding:10px 0;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:12px;color:var(--muted)}
+.dot.on{background:rgba(214,174,85,.18);border-color:var(--gold);color:var(--gold2)}
+.tabs{display:flex;gap:8px;margin-bottom:10px}.tabs button{flex:1}
+.list-item{padding:12px 0;border-bottom:1px solid var(--line)}.list-item:last-child{border:0}
+.plus{color:var(--green)}.minus{color:#ff7a8a}
+/* pastki navigatsiya */
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;padding:8px 8px calc(8px + var(--safe-b));
+background:rgba(14,16,24,.78);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-top:1px solid var(--line);z-index:10}
+nav button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 10px;color:var(--muted);font-size:11px;min-width:56px}
+nav svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{color:var(--gold2)}nav button.on svg{filter:drop-shadow(0 0 6px rgba(255,215,120,.6))}
+#toast{position:fixed;left:50%;bottom:calc(86px + var(--safe-b));transform:translate(-50%,30px);opacity:0;pointer-events:none;
+background:#1b1f2b;border:1px solid var(--line);padding:11px 16px;border-radius:14px;max-width:90vw;transition:.3s;z-index:20;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}#toast.err{border-color:#ff7a8a}
+.fade{animation:fade .35s ease}@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+/* yengil rejim va reduced-motion */
+.lite *,.lite .aurora i{animation:none!important}
+@media (prefers-reduced-motion:reduce){*,.aurora i{animation:none!important;transition:none!important}}

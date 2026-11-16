@@ -1,0 +1,13 @@
+# Haqiqiy qiymatlarni FAQAT Render -> Environment bo'limiga yozing. Bu faylga yozmang.
+BOT_TOKEN=
+DATABASE_URL=
+ADMIN_IDS=
+WEBHOOK_SECRET=
+BASE_URL=
+# Karta rekvizitlari (birinchi ishga tushishda bazaga yoziladi, keyin admin paneldan o'zgartiriladi)
+CARD_NUMBER=
+CARD_HOLDER=
+# Click (merchant ma'lumotlari bo'lmasa not_configured holatida qoladi)
+CLICK_SERVICE_ID=
+CLICK_MERCHANT_ID=
+CLICK_SECRET_KEY=
